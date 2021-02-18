@@ -10,7 +10,7 @@ jobs:
       fail-fast: false
       matrix:
         php: ['5.6', '7.0', '7.1', '7.2', '7.3', '7.4', '8.0']
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
 
     steps:
       - name: Check out source code
@@ -127,7 +127,7 @@ jobs:
 
       - name: Start MySQL server
         if: steps.check_files.outputs.files_exists == 'true'
-        run: sudo service mysql start
+        run: sudo systemctl start mysql
 
       - name: Prepare test database
         if: steps.check_files.outputs.files_exists == 'true'
